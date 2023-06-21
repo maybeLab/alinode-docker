@@ -9,8 +9,8 @@ ENV ENABLE_NODE_LOG YES
 ENV NODE_LOG_DIR /tmp
 ENV HOME /root
 
-RUN curl -fsSLO --compressed "https://npm.taobao.org/mirrors/alinode/v$ALINODE_VERSION/alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz" \
-  && curl -fsSLO --compressed "https://npm.taobao.org/mirrors/alinode/v$ALINODE_VERSION/SHASUMS256.txt" \
+RUN curl -fsSLO --compressed "https://registry.npmmirror.com/-/binary/alinode/v$ALINODE_VERSION/alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz" \
+  && curl -fsSLO --compressed "https://registry.npmmirror.com/-/binary/alinode/v$ALINODE_VERSION/SHASUMS256.txt" \
   && grep " alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -zxf "alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz" SHASUMS256.txt \
